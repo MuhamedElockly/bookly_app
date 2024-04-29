@@ -21,15 +21,22 @@ class _SplashViewBodyState extends State<SplashViewBody>
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 2),
     );
     slidingAnimation =
-        Tween<Offset>(begin: const Offset(0, 10), end: Offset.zero)
+        Tween<Offset>(begin: const Offset(0, 20), end: Offset.zero)
             .animate(animationController);
     animationController.forward();
     slidingAnimation.addListener(() {
       setState(() {});
     });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    animationController.dispose();
   }
 
   @override
