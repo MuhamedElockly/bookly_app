@@ -2,8 +2,8 @@ import 'package:bookly_app/core/utils/assets_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CustomFeaturedListViewItem extends StatelessWidget {
-  const CustomFeaturedListViewItem();
+class FeaturedListViewItem extends StatelessWidget {
+  const FeaturedListViewItem();
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
