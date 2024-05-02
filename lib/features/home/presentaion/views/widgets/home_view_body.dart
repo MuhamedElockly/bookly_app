@@ -1,6 +1,7 @@
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/assets_data.dart';
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/presentaion/views/widgets/best_seller_list_view_item.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/custom_app_bar.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/list_view_item.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/featured_list_view.dart';
@@ -27,36 +28,10 @@ class HomeViewBody extends StatelessWidget {
               fontFamily: kGTSectraFine,
             ),
           ),
+          SizedBox(height: 20),
           BestSellerListViewItem(),
         ],
       ),
-    );
-  }
-}
-
-class BestSellerListViewItem extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(
-          height: 150,
-          child: AspectRatio(
-            aspectRatio: 2.5 / 4,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.red,
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage(AssetsData.testImage),
-                ),
-              ),
-            ),
-          ),
-        ),
-        Column(),
-      ],
     );
   }
 }
