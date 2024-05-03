@@ -40,10 +40,10 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        const SliverFillRemaining(
+        const SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: const BestSellerListView(),
+            child: BestSellerListView(),
           ),
         ),
       ],
@@ -56,7 +56,8 @@ class BestSellerListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
       itemCount: 10,
       itemBuilder: (context, index) {
