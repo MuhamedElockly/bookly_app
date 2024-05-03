@@ -7,6 +7,7 @@ import 'package:bookly_app/features/home/presentaion/views/widgets/list_view_ite
 import 'package:bookly_app/features/home/presentaion/views/widgets/featured_list_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -14,24 +15,56 @@ class HomeViewBody extends StatelessWidget {
   const HomeViewBody();
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomAppBar(),
-          FeaturedListView(),
-          SizedBox(height: 50),
-          Text(
-            'Best Seller',
-            style: Styles.textStyle18.copyWith(
-              fontFamily: kGTSectraFine,
-            ),
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: CustomAppBar(),
+              ),
+              FeaturedListView(),
+              SizedBox(height: 50),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  'Best Seller',
+                  style: Styles.textStyle18.copyWith(
+                    fontFamily: kGTSectraFine,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+            ],
           ),
-          SizedBox(height: 20),
-          BestSellerListViewItem(),
-        ],
-      ),
+        ),
+        const SliverFillRemaining(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: const BestSellerListView(),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class BestSellerListView extends StatelessWidget {
+  const BestSellerListView();
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.zero,
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: BestSellerListViewItem(),
+        );
+      },
     );
   }
 }
