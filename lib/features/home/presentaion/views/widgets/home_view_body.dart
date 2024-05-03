@@ -1,9 +1,10 @@
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/assets_data.dart';
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/presentaion/views/widgets/best_seller_list_view.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/best_seller_list_view_item.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/custom_app_bar.dart';
-import 'package:bookly_app/features/home/presentaion/views/widgets/list_view_item.dart';
+import 'package:bookly_app/features/home/presentaion/views/widgets/featured_list_view_item.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/featured_list_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -47,25 +48,6 @@ class HomeViewBody extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class BestSellerListView extends StatelessWidget {
-  const BestSellerListView();
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.zero,
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          child: BestSellerListViewItem(),
-        );
-      },
     );
   }
 }
