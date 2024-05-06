@@ -4,9 +4,12 @@ import 'package:bookly_app/features/home/presentaion/views/widgets/book_action.d
 import 'package:bookly_app/features/home/presentaion/views/widgets/book_ratin.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/custom_app_bar.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/custom_book_details_app_bar.dart';
+import 'package:bookly_app/features/home/presentaion/views/widgets/featured_list_view.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/featured_list_view_item.dart';
+import 'package:bookly_app/features/home/presentaion/views/widgets/similar_books_list_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -50,6 +53,25 @@ class BookDetailsViewBody extends StatelessWidget {
             height: 37,
           ),
           BookAction(),
+          SizedBox(
+            height: 50,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'You can also like',
+              style: Styles.textStyle14.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          SimilarBooksListView(),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .02,
+          ),
         ],
       ),
     );
