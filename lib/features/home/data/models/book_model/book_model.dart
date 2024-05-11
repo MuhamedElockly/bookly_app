@@ -1,19 +1,21 @@
+import 'package:equatable/equatable.dart';
+
 import 'access_info.dart';
 import 'sale_info.dart';
 import 'search_info.dart';
 import 'volume_info.dart';
 
-class BookModel {
-  String? kind;
-  String? id;
-  String? etag;
-  String? selfLink;
-  VolumeInfo? volumeInfo;
-  SaleInfo? saleInfo;
-  AccessInfo? accessInfo;
-  SearchInfo? searchInfo;
+class BookModel extends Equatable {
+  final String? kind;
+  final String? id;
+  final String? etag;
+  final String? selfLink;
+  final VolumeInfo? volumeInfo;
+  final SaleInfo? saleInfo;
+  final AccessInfo? accessInfo;
+  final SearchInfo? searchInfo;
 
-  BookModel({
+  const BookModel({
     this.kind,
     this.id,
     this.etag,
@@ -53,4 +55,18 @@ class BookModel {
         'accessInfo': accessInfo?.toJson(),
         'searchInfo': searchInfo?.toJson(),
       };
+
+  @override
+  List<Object?> get props {
+    return [
+      kind,
+      id,
+      etag,
+      selfLink,
+      volumeInfo,
+      saleInfo,
+      accessInfo,
+      searchInfo,
+    ];
+  }
 }
