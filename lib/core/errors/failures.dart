@@ -27,7 +27,7 @@ class ServerFailure extends Failure {
         if (dioError.message!.contains('SocketException')) {
           return ServerFailure('No internet connection');
         }
-        return ServerFailure('Un expected error');
+        return ServerFailure('No internet connection');
       case DioExceptionType.unknown:
         return ServerFailure('Un expected error');
       default:
