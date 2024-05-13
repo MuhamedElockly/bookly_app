@@ -28,7 +28,7 @@ class BookDetailsViewBody extends StatelessWidget {
                 CustomBookDetailsAppBar(),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * .17),
-                  child: FeaturedListViewItem(),
+                  child: FeaturedListViewItem('https://www.google.com/url?sa=i&url=https%3A%2F%2Fjustpublishingadvice.com%2Fdoes-your-book-cover-work-for-you-in-thumbnail-size%2F&psig=AOvVaw3rach35jdRe9MxrVzDkBm-&ust=1715645778496000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPjb-dusiYYDFQAAAAAdAAAAABAE'),
                 ),
                 SizedBox(
                   height: 43,

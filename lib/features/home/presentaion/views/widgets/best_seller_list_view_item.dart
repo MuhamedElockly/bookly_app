@@ -2,6 +2,7 @@ import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/app_routers.dart';
 import 'package:bookly_app/core/utils/assets_data.dart';
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/book_ratin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
 class BookListViewItem extends StatelessWidget {
+  final BookModel bookModel;
+
+  const BookListViewItem({super.key, required this.bookModel});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -28,7 +32,9 @@ class BookListViewItem extends StatelessWidget {
                   color: Colors.red,
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage(AssetsData.testImage),
+                    image: NetworkImage(
+                      bookModel.volumeInfo!.imageLinks!.thumbnail.toString(),
+                    ),
                   ),
                 ),
               ),
@@ -42,7 +48,7 @@ class BookListViewItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .5,
                     child: Text(
-                      'Harry Potter and the Goblet of Fire',
+                      bookModel.searchInfo!.textSnippet.toString(),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle20.copyWith(
@@ -54,7 +60,9 @@ class BookListViewItem extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    'J.K. Rowling',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    bookModel.volumeInfo!.publisher.toString(),
                     style:
                         Styles.textStyle14.copyWith(color: Color(0xff707070)),
                   ),

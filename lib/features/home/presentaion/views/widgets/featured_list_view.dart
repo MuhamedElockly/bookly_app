@@ -16,11 +16,13 @@ class FeaturedListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.width * .4,
             child: ListView.builder(
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return const Padding(
+                
+                return  Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: FeaturedListViewItem(),
+                  child: FeaturedListViewItem(state.books[index].volumeInfo!.imageLinks!.thumbnail.toString()),
                 );
               },
             ),
