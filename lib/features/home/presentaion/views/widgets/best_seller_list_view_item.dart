@@ -46,7 +46,7 @@ class BookListViewItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .5,
                     child: Text(
-                      bookModel.searchInfo!.textSnippet.toString(),
+                      bookModel.volumeInfo!.title!,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle20.copyWith(
@@ -60,7 +60,7 @@ class BookListViewItem extends StatelessWidget {
                   Text(
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    bookModel.volumeInfo!.publisher.toString(),
+                    bookModel.volumeInfo!.authors![0],
                     style:
                         Styles.textStyle14.copyWith(color: Color(0xff707070)),
                   ),
@@ -70,13 +70,15 @@ class BookListViewItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '19.99 €',
+                        'Free',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Spacer(),
                       BookRating(
+                        averageRating: bookModel.volumeInfo!.averageRating ?? 0,
+                        ratingCount: bookModel.volumeInfo!.ratingCount ?? 0,
                         mainAxisAlignment: MainAxisAlignment.end,
                       ),
                     ],

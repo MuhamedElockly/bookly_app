@@ -3,8 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating({super.key, required this.mainAxisAlignment});
+  const BookRating({super.key, required this.mainAxisAlignment, required this.ratingCount, required this.averageRating});
   final MainAxisAlignment mainAxisAlignment;
+  final num ratingCount;
+  final num averageRating;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,14 +21,14 @@ class BookRating extends StatelessWidget {
           width: 14,
         ),
         Text(
-          '4.8',
+          averageRating.toString(),
           style: Styles.textStyle16.copyWith(fontWeight: FontWeight.bold),
         ),
         const SizedBox(
           width: 5,
         ),
         Text(
-          '(2899)',
+          '($ratingCount)',
           style: Styles.textStyle14.copyWith(color: Color(0xff707070)),
         )
       ],
