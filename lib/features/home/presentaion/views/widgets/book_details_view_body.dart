@@ -1,5 +1,6 @@
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/core/widgets/custom_button.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/book_action.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/book_ratin.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/custom_app_bar.dart';
@@ -11,8 +12,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
+  final BookModel bookModel;
+
+  const BookDetailsViewBody({super.key, required this.bookModel});
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -29,7 +34,7 @@ class BookDetailsViewBody extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * .17),
                   child: FeaturedListViewItem(
-                      'https://www.google.com/url?sa=i&url=https%3A%2F%2Fjustpublishingadvice.com%2Fdoes-your-book-cover-work-for-you-in-thumbnail-size%2F&psig=AOvVaw3rach35jdRe9MxrVzDkBm-&ust=1715645778496000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPjb-dusiYYDFQAAAAAdAAAAABAE'),
+                      bookModel.volumeInfo!.imageLinks!.thumbnail!),
                 ),
                 SizedBox(
                   height: 43,
