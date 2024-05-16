@@ -40,7 +40,9 @@ class BookDetailsViewBody extends StatelessWidget {
                   height: 43,
                 ),
                 Text(
-                  "The Jungle Book",
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  bookModel.volumeInfo!.title!,
                   style: Styles.textStyle30,
                 ),
                 SizedBox(
@@ -49,7 +51,9 @@ class BookDetailsViewBody extends StatelessWidget {
                 Opacity(
                   opacity: .7,
                   child: Text(
-                    "Rydialk Klibing",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    bookModel.volumeInfo!.description!,
                     style: Styles.textStyle14.copyWith(
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.w500),
@@ -59,8 +63,8 @@ class BookDetailsViewBody extends StatelessWidget {
                   height: 18,
                 ),
                 BookRating(
-                  averageRating: 8,
-                  ratingCount: 456,
+                  averageRating: bookModel.volumeInfo!.averageRating ?? 0,
+                  ratingCount: bookModel.volumeInfo!.ratingCount ?? 0,
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
                 SizedBox(
