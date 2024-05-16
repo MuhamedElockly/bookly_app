@@ -12,7 +12,7 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchNewstBooks() async {
     try {
       var data = await apiService.get(
-          endPoint: 'https://www.googleapis.com/books/v1/volumes?q=subject:football');
+          endPoint: 'volumes?q=computer science');
 
       List<BookModel> books = [];
       for (var item in data['items']) {
@@ -33,7 +33,27 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var data = await apiService.get(
-          endPoint: 'https://www.googleapis.com/books/v1/volumes?q=football');
+          endPoint: 'volumes?q=football');
+
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } catch (e) {
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(
+        ServerFailure(e.toString()),
+      );
+    }
+  }
+ @override
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String subject}) async {
+    try {
+      var data = await apiService.get(
+          endPoint: 'volumes?q='+subject);
 
       List<BookModel> books = [];
       for (var item in data['items']) {
