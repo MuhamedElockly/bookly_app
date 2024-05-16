@@ -12,7 +12,7 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchNewstBooks() async {
     try {
       var data = await apiService.get(
-          endPoint: 'https://www.googleapis.com/books/v1/volumes?q=programming');
+          endPoint: 'https://www.googleapis.com/books/v1/volumes?q=subject:football');
 
       List<BookModel> books = [];
       for (var item in data['items']) {
@@ -30,10 +30,10 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks()async {
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
-     var data = await apiService.get(
-          endPoint: 'https://www.googleapis.com/books/v1/volumes?q=programming');
+      var data = await apiService.get(
+          endPoint: 'https://www.googleapis.com/books/v1/volumes?q=football');
 
       List<BookModel> books = [];
       for (var item in data['items']) {
