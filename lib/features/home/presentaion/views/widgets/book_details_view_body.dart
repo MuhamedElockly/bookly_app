@@ -44,6 +44,7 @@ class BookDetailsViewBody extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   bookModel.volumeInfo!.title!,
                   style: Styles.textStyle30,
+                  textAlign: TextAlign.center,
                 ),
                 SizedBox(
                   height: 6,
@@ -52,6 +53,7 @@ class BookDetailsViewBody extends StatelessWidget {
                   opacity: .7,
                   child: Text(
                     maxLines: 2,
+                    textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     bookModel.volumeInfo!.description!,
                     style: Styles.textStyle14.copyWith(
