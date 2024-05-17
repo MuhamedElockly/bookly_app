@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/utils/app_routers.dart';
 import 'package:bookly_app/core/widgets/custom_error.dart';
 import 'package:bookly_app/core/widgets/custom_loading_indicator.dart';
 import 'package:bookly_app/features/home/presentaion/manager/featured_book_cubit/featured_books_cubit.dart';
@@ -5,6 +6,7 @@ import 'package:bookly_app/features/home/presentaion/views/widgets/featured_list
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class FeaturedListView extends StatelessWidget {
   const FeaturedListView();
@@ -19,10 +21,18 @@ class FeaturedListView extends StatelessWidget {
               itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                
-                return  Padding(
+                return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: FeaturedListViewItem(state.books[index].volumeInfo!.imageLinks!.thumbnail.toString()),
+                  child: GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).push(
+                          AppRouters.kBooKDetailsView,
+                          extra: state.books[index]
+                        );
+                      },
+                      child: FeaturedListViewItem(state
+                          .books[index].volumeInfo!.imageLinks!.thumbnail
+                          .toString())),
                 );
               },
             ),
