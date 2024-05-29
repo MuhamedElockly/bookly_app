@@ -2,7 +2,9 @@ import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/core/widgets/custom_error.dart';
 import 'package:bookly_app/core/widgets/custom_loading_indicator.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/features/home/presentaion/views/widgets/best_seller_list_view.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/best_seller_list_view_item.dart';
+import 'package:bookly_app/features/home/presentaion/views/widgets/featured_list_view_item.dart';
 import 'package:bookly_app/features/search/presentation/manager/cubit/search_result_cubit.dart';
 import 'package:bookly_app/features/search/presentation/views/widgets/custom_search_text_field.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +31,7 @@ class SearchViewBody extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          Expanded(child: Container()),
+          Expanded(child: SearchResultListView()),
         ],
       ),
     );
@@ -44,9 +46,14 @@ class SearchResultListView extends StatelessWidget {
         if (state is SearchResultSuccess) {
           return ListView.builder(
             padding: EdgeInsets.zero,
-            itemCount: 10,
+            itemCount: state.books.length,
             itemBuilder: (context, index) {
-              return Container();
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: BookListViewItem(
+                  bookModel: state.books[index],
+                ),
+              );
             },
           );
         } else if (state is SearchResultFailure) {
