@@ -10,6 +10,7 @@ sealed class SearchResultState extends Equatable {
 final class SearchResultInitial extends SearchResultState {}
 
 final class SearchResultLoading extends SearchResultState {}
+final class SearchResultEmpty extends SearchResultState {}
 
 final class SearchResultSuccess extends SearchResultState {
   SearchResultSuccess({required this.books});

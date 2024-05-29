@@ -58,8 +58,12 @@ class SearchResultListView extends StatelessWidget {
           );
         } else if (state is SearchResultFailure) {
           return CustomError(errorMessage: state.errMessage);
-        } else {
+        } else if (state is SearchResultLoading) {
           return CustomLoadingIndicator();
+        } else if (state is SearchResultEmpty) {
+          return CustomError(errorMessage: 'Enter something to search about');
+        } else {
+          return Container();
         }
       },
     );

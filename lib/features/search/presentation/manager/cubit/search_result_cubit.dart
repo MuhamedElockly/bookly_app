@@ -8,15 +8,19 @@ part 'search_result_state.dart';
 
 class SearchResultCubit extends Cubit<SearchResultState> {
   SearchResultCubit(this.homeRepo) : super(SearchResultInitial());
- 
-   final HomeRepo homeRepo;
-  Future<void> fetchResultBook({required String subjec}) async {
-    emit(SearchResultLoading());
-    var result = await homeRepo.fetchSimilarBooks(subject: subjec);
-    result.fold((failure) {
-      emit(SearchResultFailure( errMessage: failure.errorMessage));
-    }, (books) {
-      emit(SearchResultSuccess(books: books));
-    });
+
+  final HomeRepo homeRepo;
+  Future<void> fetchSearchResultBooks({required String subject}) async {
+    if (subject.length == 0) {
+      emit(SearchResultEmpty());
+    } else {
+      emit(SearchResultLoading());
+      var result = await homeRepo.fetchSearchResultBooks(subject: subject);
+      result.fold((failure) {
+        emit(SearchResultFailure(errMessage: failure.errorMessage));
+      }, (books) {
+        emit(SearchResultSuccess(books: books));
+      });
+    }
   }
 }
