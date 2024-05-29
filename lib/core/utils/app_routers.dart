@@ -29,7 +29,9 @@ abstract class AppRouters {
           create: (context) => SimilarBooksCubit(
             getIt.get<HomeRepoImpl>(),
           ),
-          child: BookDetailsView(bookModel:state.extra as BookModel ,),
+          child: BookDetailsView(
+            bookModel: state.extra as BookModel,
+          ),
         ),
       ),
       GoRoute(

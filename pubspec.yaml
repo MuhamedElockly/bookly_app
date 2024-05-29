@@ -43,6 +43,7 @@ dependencies:
   hash_cached_image: ^0.0.1
   shimmer: ^3.0.0
   shimmer_loading: ^0.0.1
+  url_launcher: ^6.2.6
 
 dev_dependencies:
   flutter_lints: ^3.0.0
